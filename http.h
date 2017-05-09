@@ -6,6 +6,23 @@
 #include <curl/curl.h>
 #include <curl/easy.h>
 
+/* Fill in some libcurl defines that are missing on older libcurl versions. */
+#ifndef CURLPROTO_HTTP
+#define CURLPROTO_HTTP   (1<<0)
+#endif
+
+#ifndef CURLPROTO_HTTPS
+#define CURLPROTO_HTTPS  (1<<1)
+#endif
+
+#ifndef CURLPROTO_FTP
+#define CURLPROTO_FTP    (1<<2)
+#endif
+
+#ifndef CURLPROTO_FTPS
+#define CURLPROTO_FTPS   (1<<3)
+#endif
+
 #include "strbuf.h"
 #include "remote.h"
 #include "url.h"
