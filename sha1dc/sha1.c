@@ -81,6 +81,9 @@
 #define SHA1DC_BIGENDIAN
 #endif
 
+/* Mac OS X defines the __BIG_ENDIAN__ macro to 1 if big endian. */
+#elif defined(__BIG_ENDIAN__) && __BIG_ENDIAN__
+#define SHA1DC_BIGENDIAN
 /* Not under GCC-alike or glibc or *BSD or newlib */
 #elif (defined(__ARMEB__) || defined(__THUMBEB__) || defined(__AARCH64EB__) || \
        defined(__MIPSEB__) || defined(__MIPSEB) || defined(_MIPSEB) || \
@@ -112,7 +115,7 @@
 #else /* Not under GCC-alike or glibc or *BSD or newlib or <processor whitelist> or <os whitelist> or <processor blacklist> */
 
 /* We do nothing more here for now */
-/*#error "Uncomment this to see if you fall through all the detection"*/
+#error "Uncomment this to see if you fall through all the detection"
 
 #endif /* Big Endian detection */
 
